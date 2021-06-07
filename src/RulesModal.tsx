@@ -15,7 +15,7 @@ export const RulesModal: React.FunctionComponent<ModalProps> = (props: ModalProp
             animation={false}
         >
             <Modal.Header>
-                <Modal.Title>How To Wine</Modal.Title>
+                <Modal.Title>How To Win</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {staticTexts.rules.howToWin}
