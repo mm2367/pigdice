@@ -9,24 +9,14 @@ import {Player, Winner} from "./PigDiceTypes";
 import LaunchIcon from '@material-ui/icons/Launch';
 import {RulesModal} from "./RulesModal";
 
-export interface PlayPigDiceStateProps {
-    numPlayers: number;
-    players: Player[];
-}
-
-export interface PlayPigDiceDispatchProps {
-    updateWinners(player: Player): void
-}
-
-export type PlayPigDiceProps = PlayPigDiceStateProps & PlayPigDiceDispatchProps;
-export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: PlayPigDiceProps) => {
+export const PlayPigDice: React.FunctionComponent = () => {
     const [dice, setDice] = React.useState<face[]>(["one", "one"]);
     const [showModal, setShowModal] = React.useState<boolean>(false);
     const [turnScore, setTurnScore] = React.useState<number>(0);
     const [activePlayerID, setActivePlayerID] = React.useState<number>(0);
     const [winner, setWinner] = React.useState<Player>(null);
     const [message, setMessage] = React.useState('');
-    const [rolling,setRolling]=React.useState(false);
+    const [rolling, setRolling] = React.useState(false);
     const [numPlayers, setNumPlayer] = React.useState<number>(2);
     const [listOfWinners, setListOfWinners] = React.useState<Winner[]>([]);
     const [players, setPlayers] = React.useState<Player[]>([{id: 0, score: 0, isActive: true}, {
@@ -34,7 +24,6 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
         score: 0,
         isActive: true
     }]);
-    console.log(showModal)
     const pointMappings = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6};
     const faces: face[] = ["one", "two", "three", "four", "five", "six"];
 
@@ -47,9 +36,7 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
         setPlayers(initPlayers);
     }, [numPlayers]);
     const handleKeyDown = (e: KeyboardEvent) => {
-        if (showModal && e.target && (e.target as Element).className ==='fade modal show') {
-            console.log((e.target as Element).className );
-            console.log('hello')
+        if (e.target && (e.target as Element).className === 'modal') {
             setShowModal(false);
         }
     };
@@ -57,9 +44,7 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
         document.addEventListener('click', handleKeyDown);
         return () => document.removeEventListener('click', handleKeyDown);
     });
-    //rolls die, updates
     const rollDice = () => {
-        console.log('rolling');
         setRolling(true);
         let dice = [faces[Math.floor(Math.random() * faces.length)], faces[Math.floor(Math.random() * faces.length)]]
         setDice(dice);
@@ -146,17 +131,16 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
         reset();
     };
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-      //  e.stopPropagation();
         setShowModal(!showModal)
 
     };
     const holdButtonDisabled = (dice[0] === dice[1] && dice[0] !== "one") || winner !== null;
     return (
-        <>
+        <React.Fragment>
             <div className={'container pig-dice'}>
                 <h1 className={'text-center text-uppercase'}>{winner ? `Player ${winner.id + 1} Wins!` : 'Pig Dice'}</h1>
                 <div className={'d-flex justify-content-center mt-2'}><label>Enter Number of Players (2-4):
-                    <input type={"number"} max={4} min={2} defaultValue={2}
+                    <input data-testid='player-input' type={"number"} max={4} min={2} defaultValue={2}
                            name={'numberOfPlayers'}
                            onChange={(event) => handleNumOfPlayersChange(event)}/>
                     <ReactTooltip id={'rules'} place={'bottom'}
@@ -172,7 +156,9 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
                     <Die face={dice[1]} rolling={rolling}/>
                 </div>
                 <div className={'d-flex justify-content-center align-items-center'}>
-                    <button className={'mx-4'} disabled={winner !== null} onClick={() => rollDice()}>Roll</button>
+                    <button className={'mx-4'} data-testid='roll-button' disabled={winner !== null}
+                            onClick={() => rollDice()}>Roll
+                    </button>
                     <RefreshIcon htmlColor={"#E18D96"} data-tip={'refresh'} data-for={'refresh'}
                                  onClick={() => reset()}/>
                     <ReactTooltip id={'refresh'} place={'bottom'}
@@ -181,7 +167,7 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
                         <ReactTooltip id={'disabled-hold'} place={'bottom'}
                                       effect={'solid'}>{winner ? staticTexts.holdButtonText.winnerDeclared : staticTexts.holdButtonText.doublesHold}</ReactTooltip> :
                         <div/>}
-                        <button className={'mx-4'} onClick={() => holdTurn(players, true)}
+                        <button className={'mx-4'} data-testid='hold-button' onClick={() => holdTurn(players, true)}
                                 disabled={holdButtonDisabled}>Hold
                         </button>
                     </div>
@@ -189,6 +175,6 @@ export const PlayPigDice: React.FunctionComponent<PlayPigDiceProps> = (props: Pl
                 <GameScoreBoard className={'mt-5'} winnerBoard={listOfWinners}/>
             </div>
             <RulesModal show={showModal}/>
-        </>
+        </React.Fragment>
     )
 };

@@ -27,7 +27,7 @@ export const Welcome: React.FunctionComponent<WelcomeProps> = (props: WelcomePro
                 <li>{staticTexts.rules.ruleFour}</li>
             </ul>
             <div className={'d-flex justify-content-center'}>
-                <Link className={'btn btn-primary d-flex align-items-center justify-content-center my-3'} to={'pigdice'}>Let's Play!</Link>
+                <Link className={'btn btn-primary d-flex align-items-center justify-content-center my-'} to={'pigdice'}>Let's Play!</Link>
             </div>
         </div>
 

@@ -18,7 +18,6 @@ export const Die: React.FunctionComponent<DieStateProps> = (props: DieStateProps
         "five": faDiceFive,
         "six": faDiceSix
     };
-    console.log(props.rolling)
     return (
         <FontAwesomeIcon className={`Die m-5 ${props.rolling && 'Die-shaking'}`}
                          icon={props.face ? faceMappings[props.face] : faDiceOne} size={"10x"}/>

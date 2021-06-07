@@ -9,8 +9,8 @@ export interface GameScoreBoardStateProps {
 export const GameScoreBoard: React.FunctionComponent<GameScoreBoardStateProps> = (props: GameScoreBoardStateProps) => {
     let gameBoard;
     if (props.winnerBoard && props.winnerBoard.length > 0) {
-        const sortedWinnerBoard=props.winnerBoard.sort((first, second) => {
-            return second['totalScore'] - first['totalScore'];
+        const sortedWinnerBoard=props.winnerBoard.sort((winnerOne, winnerTwo) => {
+            return winnerTwo['totalScore'] - winnerOne['totalScore'];
         });
             gameBoard = sortedWinnerBoard.map((items) => {
                 return (
