@@ -1,0 +1,42 @@
+
+.pig-dice {
+  font-weight: 200;
+  .player-heading {
+    font-size: 32px;
+
+    &_player-one {
+      background-color: #e6a7e6;
+    }
+
+    &_player-two {
+      background-color: #B5BA7E;
+    }
+    .subtitle{
+      font-size: 20px;
+    }
+  }
+  .active {
+    font-weight: 700!important;
+  }
+
+  button {
+    border: none;
+    min-width: 175px;
+    min-height: 50px;
+    font-size: 20px;
+    background-color: #E18D96;
+    color: white;
+
+    &:disabled {
+      background-color: rgba(225, 141, 150, 0.3) !important;
+    }
+  }
+  .message-placeholder{
+    height: 40px;
+  }
+}
+.launch-icon{
+  .MuiSvgIcon-root{
+    cursor: pointer;
+  }
+}
