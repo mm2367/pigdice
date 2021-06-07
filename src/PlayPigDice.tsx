@@ -96,7 +96,7 @@ export const PlayPigDice: React.FunctionComponent = () => {
             if (player.isActive && selfHold) {
                 player.score += turnScore;
                 player.isActive = false;
-                if (player.score >= 10) {
+                if (player.score >= 100) {
                     updateWinner(player, updateListOfWinners)
                 }
             } else if (player.id === ((activePlayerID + 1) % updatedPlayers.length)) {

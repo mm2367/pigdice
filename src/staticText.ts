@@ -1,6 +1,6 @@
-export const staticTexts={
-    rules:{
-
+export const staticTexts = {
+    rules: {
+        howToWin: 'The object of the game is to be the first player to reach 100 points.The rules that allow you to get there are simple:',
         ruleOne: 'If neither die show a 1, the sum of both dice is added to their turn total,\n' +
             '            and the player’s turn continues unless they choose to “hold”',
         ruleOneA: ' A “hold” will end their turn and apply the sum of all rolls from that\n' +
@@ -18,8 +18,8 @@ export const staticTexts={
         doublesHold: 'Hold is disabled after rolling doubles',
         winnerDeclared: 'Game is Over.Please Start New Game'
     },
-    diceFeedback:{
+    diceFeedback: {
         snakeEyes: 'Oh No! You rolled Snake Eyes',
-        oneRolled:'Oh No! You rolled a One',
+        oneRolled: 'Oh No! You rolled a One',
     }
 }

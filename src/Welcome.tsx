@@ -18,6 +18,8 @@ export const Welcome: React.FunctionComponent<WelcomeProps> = (props: WelcomePro
             </div>
             <h2 className={'text-center'}>Rules</h2>
             <ul>
+                <li>{staticTexts.rules.howToWin}</li>
+            <ul>
                 <li>{staticTexts.rules.ruleOne}</li>
                 <ul>
                     <li>{staticTexts.rules.ruleOneA}</li>
@@ -25,6 +27,7 @@ export const Welcome: React.FunctionComponent<WelcomeProps> = (props: WelcomePro
                 <li>{staticTexts.rules.ruleTwo}</li>
                 <li>{staticTexts.rules.ruleThree}</li>
                 <li>{staticTexts.rules.ruleFour}</li>
+            </ul>
             </ul>
             <div className={'d-flex justify-content-center'}>
                 <Link className={'btn btn-primary d-flex align-items-center justify-content-center my-'} to={'pigdice'}>Let's Play!</Link>

@@ -15,18 +15,19 @@ export const RulesModal: React.FunctionComponent<ModalProps> = (props: ModalProp
             animation={false}
         >
             <Modal.Header>
-                <Modal.Title>Rules</Modal.Title>
+                <Modal.Title>How To Wine</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <ul>
-                    <li>{staticTexts.rules.ruleOne}</li>
+                {staticTexts.rules.howToWin}
                     <ul>
-                        <li>{staticTexts.rules.ruleOneA}</li>
+                        <li>{staticTexts.rules.ruleOne}</li>
+                        <ul>
+                            <li>{staticTexts.rules.ruleOneA}</li>
+                        </ul>
+                        <li>{staticTexts.rules.ruleTwo}</li>
+                        <li>{staticTexts.rules.ruleThree}</li>
+                        <li>{staticTexts.rules.ruleFour}</li>
                     </ul>
-                    <li>{staticTexts.rules.ruleTwo}</li>
-                    <li>{staticTexts.rules.ruleThree}</li>
-                    <li>{staticTexts.rules.ruleFour}</li>
-                </ul>
             </Modal.Body>
         </Modal>
 
