@@ -11,16 +11,15 @@ export interface DieStateProps {
 
 export const Die: React.FunctionComponent<DieStateProps> = (props: DieStateProps) => {
     const faceMappings = {
-        "one": faDiceOne,
-        "two": faDiceTwo,
-        "three": faDiceThree,
-        "four": faDiceFour,
-        "five": faDiceFive,
-        "six": faDiceSix
+        "one": 'dice',
+        "two": 'dice-two',
+        "three": 'dice-three',
+        "four": 'dice-four',
+        "five": 'dice-five',
+        "six": 'dice-six'
     };
     return (
-        <FontAwesomeIcon className={`Die m-5 ${props.rolling && 'Die-shaking'}`}
-                         icon={props.face ? faceMappings[props.face] : faDiceOne} size={"10x"}/>
+        <FontAwesomeIcon className={`Die m-5 ${props.rolling && 'Die-shaking'}`} icon='dice' size={"10x"}/>
 
     )
 };

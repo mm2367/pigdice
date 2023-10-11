@@ -14,7 +14,7 @@ export const PlayPigDice: React.FunctionComponent = () => {
     const [showModal, setShowModal] = React.useState<boolean>(false);
     const [turnScore, setTurnScore] = React.useState<number>(0);
     const [activePlayerID, setActivePlayerID] = React.useState<number>(0);
-    const [winner, setWinner] = React.useState<Player>(null);
+    const [winner, setWinner] = React.useState<Player>();
     const [message, setMessage] = React.useState('');
     const [rolling, setRolling] = React.useState(false);
     const [numPlayers, setNumPlayer] = React.useState<number>(2);
